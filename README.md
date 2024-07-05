@@ -1,4 +1,4 @@
-# MyVueApp
+# InnyxChallenge
 
 Este é um projeto de demonstração utilizando Vue.js 3, TypeScript e a API Composition com `<script setup>`. A aplicação inclui funcionalidades para listar, adicionar, editar e excluir produtos, além de adicionar produtos ao carrinho de compras e uma tela de checkout.
 
