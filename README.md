@@ -37,5 +37,5 @@ Este é um projeto de demonstração utilizando Vue.js 3, TypeScript e a API Com
 
 Para acessar o painel administrativo, use as seguintes credenciais de login:
 
-- Email: '<emailteste@gmail.com>'
-- Senha: '123'
+- Email: <emailteste@gmail.com>
+- Senha: 123
