@@ -1,12 +1,11 @@
 <template>
   <div>
-    <Navbar />
-    <router-view />
+    <ProductForm />
   </div>
 </template>
 
 <script setup lang="ts">
-import Navbar from './components/Navbar.vue';
+import ProductForm from '../components/ProductForm.vue';
 </script>
 
 <style scoped></style>
