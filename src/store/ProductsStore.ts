@@ -18,6 +18,12 @@ export const useProductStore = defineStore("products", {
     editProduct(updatedProduct: ProductModel) {
       const index = this.products.findIndex((p) => p.id === updatedProduct.id);
       if (index !== -1) this.products[index] = updatedProduct;
+      const cartItem = this.cart.find(
+        (item) => item.product.id === updatedProduct.id
+      );
+      if (cartItem) {
+        cartItem.product = updatedProduct;
+      }
     },
     deleteProduct(productId: number) {
       this.products = this.products.filter((p) => p.id !== productId);

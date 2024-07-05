@@ -12,7 +12,7 @@
       </div>
       <div class="mb-3">
         <label for="price" class="form-label">Preço:</label>
-        <input type="number" v-model="price" id="price" class="form-control" required />
+        <input type="text" v-model="price" id="price" class="form-control" v-decimal required />
       </div>
       <div class="mb-3">
         <label for="image" class="form-label">Imagem:</label>
