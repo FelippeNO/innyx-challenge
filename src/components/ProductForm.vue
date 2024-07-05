@@ -26,6 +26,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import router from '../router';
 import { useProductStore } from '../store/ProductsStore';
 
 const store = useProductStore();
@@ -52,17 +53,21 @@ const onSubmit = () => {
                     name: name.value,
                     description: description.value,
                     price: price.value,
-                    image: e.target.result.toString()
+                    image: e.target.result as string,
                 };
                 store.addProduct(newProduct);
+
             }
         };
         reader.readAsDataURL(image.value);
+        router.push('/products');
     }
+
 };
 
 const addRandomProduct = () => {
     store.addRandomProduct();
+    router.push('/products');
 };
 </script>
 

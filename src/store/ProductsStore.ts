@@ -7,7 +7,10 @@ export const useProductStore = defineStore("products", {
     cart: [] as { product: ProductModel; quantity: number }[],
     totalProducts: 80,
     productsPerPage: 20,
+    createdProducts: [],
+    updatedProducts: [],
   }),
+
   actions: {
     addProduct(product: ProductModel) {
       this.products.push(product);
@@ -37,12 +40,13 @@ export const useProductStore = defineStore("products", {
       const randomProduct = ProductModel.fromProxy();
       this.addProduct(randomProduct);
     },
+    async fetchProducts() {
+      this.products = Array.from({ length: this.totalProducts }, (_, index) =>
+        ProductModel.fromProxy()
+      );
+    },
     async loadProducts() {
-      this.products = [];
-      for (let i = 0; i < this.totalProducts; i++) {
-        await new Promise((resolve) => setTimeout(resolve, 20));
-        this.addRandomProduct();
-      }
+      await new Promise((resolve) => setTimeout(resolve, 1000));
     },
   },
 });

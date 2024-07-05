@@ -26,7 +26,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { ProductModel } from '../models/ProductModel';
 import { useProductStore } from '../store/ProductsStore';
 
 const store = useProductStore();
@@ -49,24 +48,15 @@ const onFileChange = (e: Event) => {
 
 const onSubmit = () => {
   if (name.value && description.value && price.value) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      if (e.target && e.target.result) {
-        const updatedProduct: ProductModel = {
-          id: productId,
-          name: name.value,
-          description: description.value,
-          price: price.value,
-          image: e.target.result.toString()
-        };
-        store.editProduct(updatedProduct);
-        router.push('/products');
-      }
+    const updatedProduct = {
+      id: productId,
+      name: name.value,
+      description: description.value,
+      price: price.value,
+      image: image.value ? URL.createObjectURL(image.value) : existingImage.value,
     };
-    if (image.value) {
-      reader.readAsDataURL(image.value);
-    } else {
-    }
+    store.editProduct(updatedProduct);
+    router.push('/products');
   }
 };
 
