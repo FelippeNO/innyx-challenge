@@ -27,6 +27,10 @@ export const useProductStore = defineStore("products", {
     },
     deleteProduct(productId: number) {
       this.products = this.products.filter((p) => p.id !== productId);
+      const cartItem = this.cart.find((item) => item.product.id === productId);
+      if (cartItem) {
+        this.removeFromCart(productId);
+      }
     },
     addToCart(product: ProductModel) {
       const cartItem = this.cart.find((item) => item.product.id === product.id);
